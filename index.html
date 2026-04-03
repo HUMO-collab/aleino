@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
+    <title>ALEINO | Timeless Mastery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <!-- Nav -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#" class="brand">ALEINO</a>
+        <div class="menu-icon" id="menu-toggle">≡</div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#heritage">Heritage</a></li>
+          <li><a href="#movement">Movement</a></li>
+        </ul>
+        <a href="#enquire" class="nav-cta show-desktop">Enquire</a>
+      </div>
+    </nav>
+    <div class="menu-overlay" id="menu-overlay"></div>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-bg js-parallax" style="background-image: url('/aleino_hero_watch_1775229372227.png')"></div>
+      <div class="hero-content">
+        <h1>Timeless Mastery</h1>
+        <a href="#enquire" class="btn-primary">Acquire</a>
+      </div>
+    </section>
+
+    <!-- Heritage section -->
+    <section class="section heritage" id="heritage">
+      <div class="container section-grid">
+         <div class="text-col">
+            <h5 class="subheadline">Swiss Craftsmanship</h5>
+            <h2>Handcrafted since 1905</h2>
+            <p>Every ALEINO timepiece represents over a century of unrelenting pursuit of perfection. True mastery is not rushed; it is patiently shaped by masters whose only pursuit is excellence.</p>
+         </div>
+         <div class="img-col">
+            <img class="img-shadow" src="/aleino_dial_closeup_1775229388351.png" alt="Aleino Dial">
+         </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="section-divider js-divider"></div></div>
+
+    <!-- Movement section -->
+    <section class="section movement" id="movement">
+      <div class="container section-grid reverse">
+         <div class="text-col">
+            <h5 class="subheadline">The Calibre</h5>
+            <h2>Unseen Precision</h2>
+            <p>Beneath the textured dial beats our in-house automatic movement. Exquisitely finished, the solid gold rotor offers a glimpse into true mechanical artistry, accompanied by a 5-year service guarantee.</p>
+            <button class="btn-secondary js-open-product">Discover Specifications</button>
+         </div>
+         <div class="img-col">
+            <img class="img-shadow cursor-zoom" id="movement-img" src="/aleino_case_back_1775229407498.png" alt="Aleino Caseback">
+         </div>
+      </div>
+    </section>
+
+    <!-- Slide-in Product Panel -->
+    <div class="side-panel" id="product-panel">
+       <button class="close-panel" id="close-panel">✕</button>
+       <div class="panel-content">
+          <h5 class="subheadline">Technical Details</h5>
+          <h2>ALEINO Calibre 900</h2>
+          <ul>
+             <li><strong>Movement:</strong> Automatic, self-winding</li>
+             <li><strong>Power Reserve:</strong> 72 hours</li>
+             <li><strong>Jewels:</strong> 31 Rubies</li>
+             <li><strong>Frequency:</strong> 28,800 vph (4Hz)</li>
+             <li><strong>Case:</strong> 41mm Evergold</li>
+          </ul>
+          <p class="panel-desc">A masterpiece of micro-mechanics. Each component is chamfered, polished, and assembled entirely by hand in our Geneva manufactures.</p>
+          <a href="#enquire" class="btn-primary full-width mt-4">Commission Now</a>
+       </div>
+    </div>
+    
+    <!-- Mobile sticky CTA -->
+    <div class="mobile-sticky-cta">
+       <a href="#enquire" class="btn-secondary-mobile">Speak to a specialist</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+       <div class="container">
+          <p class="brand-footer">ALEINO</p>
+          <p class="footer-copy">© 2026 ALEINO Genève. All rights reserved. Heritage certified.</p>
+       </div>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
