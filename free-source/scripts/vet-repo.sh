@@ -181,11 +181,22 @@ if [[ -n "$README" && "$README" != "404: Not Found" ]]; then
   if printf '%s' "$README" | grep -qiE '\[.{0,30}(download|get it now|install now).{0,30}\][[:space:]]*\(https?://'; then
     warn "README pushes a Download link. Open source is distributed by cloning, not downloading."
   fi
-  if printf '%s' "$README" | grep -qiE 'disable (your )?(antivirus|windows defender)|add.{0,20}exclusion|archive password|password.{0,10}: *[0-9a-z]{3,}'; then
+  # Anchored to archive/AV phrasing only. An earlier revision also matched a bare
+  # "password...:..." which fired on Postgres URLs like PASSWORD@localhost:5432 in
+  # legitimate setup docs — a scanner that cries wolf gets ignored.
+  if printf '%s' "$README" | grep -qiE 'disable (your )?(antivirus|windows defender)|add[^.]{0,20}(defender|antivirus)[^.]{0,20}exclusion|(archive|zip|rar|7z|unzip|extraction) password|password (for|to) (the )?(archive|zip|rar|file)'; then
     flag "README asks users to disable antivirus or supplies an archive password. Hallmark of malware."
   fi
   NAME="${REPO#*/}"
-  H1=$(printf '%s\n' "$README" | grep -m1 '^# ' | sed 's/^# *//' | tr -d '*_`')
+  # Only the first heading in the README's opening lines is a title. Headings deeper in
+  # the body are section headers ("Install dependencies") and comparing those to the repo
+  # name produced false mismatches on legitimate projects.
+  H1=$(printf '%s\n' "$README" \
+       | awk 'BEGIN{f=0} /^```/{f=!f; next} !f{print}' \
+       | grep -m1 -n '^# ' | awk -F: '$1<=15{sub(/^[0-9]+:/,""); print}' \
+       | sed 's/^# *//' | tr -d '*_`')
+  # A real project title is short; a sentence is a section heading.
+  if [[ $(printf '%s' "${H1%%:*}" | wc -w) -gt 5 ]]; then H1=""; fi
   if [[ -n "$H1" ]]; then
     SLUG=$(printf '%s' "$NAME"   | tr '[:upper:]' '[:lower:]' | tr -cd '[:alnum:]')
     HSLUG=$(printf '%s' "${H1%%:*}" | tr '[:upper:]' '[:lower:]' | tr -cd '[:alnum:]')
