@@ -10,19 +10,27 @@ POST https://api.github.com/user/repos → 403 Resource not accessible by integr
 That is a permissions limit on the automation, not on your account. Creating the repo yourself
 takes about a minute.
 
+**Publish this repository as public.** The audit contains no client names, no credentials, and
+no internal system detail — it is generic security research, and it is the public evidence behind
+the "we audit every component before it touches your stack" claim in client proposals. A private
+copy proves nothing to anyone.
+
+The completed sweep of live client stacks is a *different* document and stays private in
+`templates/deliverables/` — it names clients and the location of a live credential. Do not move
+it here.
+
 ## Option A — with the `gh` CLI
 
 ```bash
 cd free-source
 git init && git add . && git commit -m "Free Source: security-validated AI video + voice stack"
-gh repo create free-source --private --source=. --remote=origin --push
+gh repo create free-source --public --source=. --remote=origin --push
 ```
-
-Swap `--private` for `--public` if you want it public.
 
 ## Option B — via the web UI
 
-1. Create a new empty repository at <https://github.com/new>, named `free-source`.
+1. Create a new empty repository at <https://github.com/new>, named `free-source`,
+   visibility **Public**.
    Do **not** initialise it with a README, license, or `.gitignore`.
 2. Then:
 
